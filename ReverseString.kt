@@ -3,12 +3,12 @@ fun main() {
     reverseString(s)
 }
 
-fun reverseString(s: CharArray): Unit {
-    var i = 0
-    var j = s.size - 1
-    while(i < j) {
-        var temp = s[i]
-        s[i++] = s[j]
-        s[j--] = temp
-    }
+fun reverseString(s: CharArray) {
+    helper(s, 0, s.size - 1)
+}
+
+tailrec fun helper(arr:CharArray, left:Int, right:Int) {
+    if (right <= left) return
+    arr[left] = arr[right].also {arr[right] = arr[left]}
+    helper(arr, left + 1, right - 1)
 }
