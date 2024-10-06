@@ -4,11 +4,11 @@ fun main() {
 }
 
 fun reverseString(s: CharArray) {
-    helper(s, 0, s.size - 1)
-}
-
-tailrec fun helper(arr:CharArray, left:Int, right:Int) {
-    if (right <= left) return
-    arr[left] = arr[right].also {arr[right] = arr[left]}
-    helper(arr, left + 1, right - 1)
+    var left = 0
+    var right = s.size - 1
+    while (left < right) {
+        s[left] = s[right].also {s[right] = s[left]}
+        left++
+        right--
+    }
 }
